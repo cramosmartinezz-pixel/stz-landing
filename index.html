@@ -551,8 +551,8 @@ p{margin:0}
           <label class="field" style="margin-bottom:0">
             <span class="field__l">Altura del techo</span>
             <select id="alto">
-              <option value="1" selected>Estándar — hasta 2,60 m</option>
-              <option value="1.15">Alto — más de 2,60 m</option>
+              <option value="2.6" selected>Estándar — hasta 2,60 m</option>
+              <option value="3">Alto — más de 2,60 m</option>
             </select>
           </label>
         </form>
@@ -576,7 +576,7 @@ p{margin:0}
               <a class="btn btn--light" id="res-cta" data-wa="Hola STZ, usé la calculadora y me dio 3000 frigorías para un dormitorio de 20 m². Quiero un presupuesto de instalación." href="#contacto">Consultar este equipo por WhatsApp</a>
             </div>
           </div>
-          <p class="calc__disc">Estimación orientativa sobre la base de 50 fg/m², ajustada por exposición solar, uso y altura. La medición definitiva la hacemos en la visita, que no tiene costo.</p>
+          <p class="calc__disc">Estimación orientativa sobre la base de 50 frigorías por m³ de ambiente, ajustada por exposición solar y tipo de uso. La medición definitiva la hacemos en la visita, que no tiene costo.</p>
         </div>
       </div>
     </div>
@@ -863,7 +863,11 @@ const STZ = {
   if (y) y.textContent = new Date().getFullYear();
 
   /* ---- calculadora de frigorías ---- */
-  const CAPACIDADES = [2250, 3000, 3500, 4500, 5500, 6000, 9000];
+  // Capacidades comerciales de split, en frigorías/h
+  const CAPACIDADES = [2250, 3000, 3500, 4500, 5500, 6000, 7500, 9000];
+
+  // Regla del oficio: 50 frigorías por m³ de ambiente (no por m²).
+  const FG_POR_M3 = 50;
   const nf = new Intl.NumberFormat("es-AR");
 
   const rango = document.getElementById("m2-range");
@@ -888,7 +892,8 @@ const STZ = {
 
   function calcular() {
     const m2 = parseInt(rango.value, 10);
-    const bruto = m2 * 50 * parseFloat(sol.value) * parseFloat(uso.value) * parseFloat(alto.value);
+    const volumen = m2 * parseFloat(alto.value);
+    const bruto = volumen * FG_POR_M3 * parseFloat(sol.value) * parseFloat(uso.value);
 
     let fg = CAPACIDADES[CAPACIDADES.length - 1];
     let excede = true;
