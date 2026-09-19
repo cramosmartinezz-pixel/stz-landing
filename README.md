@@ -1,4 +1,4 @@
-# STZ Climatización — Landing page
+﻿# STZ Climatización — Landing page
 
 Sitio estático de una sola página. Sin dependencias, sin build, sin framework.
 Se despliega tal cual está.
@@ -20,18 +20,18 @@ Abrí `index.html`, bajá hasta el final y buscá el bloque `const STZ = {`.
 ```js
 const STZ = {
   // Número de WhatsApp en formato internacional: sin +, sin espacios ni guiones.
-  // Ejemplo: 54 9 11 5555 4444  ->  "5491155554444"
-  whatsapp: "5491100000000",
+  // Chile: 56 + 9 + los 8 dígitos  ->  "56961129694"
+  whatsapp: "56961129694",
 
   // Cómo se muestra el número en pantalla
-  telefono: "+54 9 11 0000-0000",
+  telefono: "+56 9 6112 9694",
 
   // Usuario de Instagram, sin la @
   instagram: "stz.climatizacion",
 
-  email:   "contacto@stzclimatizacion.com",
-  zona:    "CABA y Zona Norte",
-  horario: "Lunes a sábado, 8 a 19 h"
+  email:   "steerzcl@gmail.com",
+  zona:    "Santiago de Chile",
+  horario: "Lunes a sábado, 8:00 a 18:00"
 };
 ```
 
@@ -45,8 +45,8 @@ Al cambiar ese bloque se actualizan solos:
 
 ### Lo único que queda aparte
 
-**La lista de barrios**, en la sección *Zona de cobertura*. Buscá
-`Barrio / localidad 1` y reemplazá los seis ítems por los tuyos.
+**La lista de comunas**, en la sección *Zona de cobertura*. Busca
+`<li>Maipú</li>` y edita los seis ítems.
 
 ---
 
@@ -75,8 +75,9 @@ previa al compartir el link apunte al dominio real.
 
 ## Pendientes recomendados
 
-- [ ] Cargar el WhatsApp, Instagram, email y zona reales.
-- [ ] Reemplazar la lista de barrios.
+- [x] Cargar el WhatsApp, Instagram, email y zona reales.
+- [x] Reemplazar la lista de comunas.
+- [ ] Confirmar los días de atención (hoy dice "Lunes a sábado").
 - [ ] Sumar 2 o 3 fotos de trabajos terminados en la sección de servicios.
-- [ ] Sumar testimonios de clientes con nombre y barrio.
+- [ ] Sumar testimonios de clientes con nombre y comuna.
 - [ ] Conectar un dominio propio.
